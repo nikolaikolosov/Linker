@@ -1,0 +1,5 @@
+1. Add complex link validation (link added in correct format)
+2. Add comments deletion
+3. Create tests
+4. Add Bottstrap design
+5. If post deleting, comments must be deleted from the database too
