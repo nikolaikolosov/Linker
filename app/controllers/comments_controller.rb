@@ -25,6 +25,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to comments_url, notice: 'Comment was successfully deleted.' }
       format.json { head :no_content }
+    redirect_to link_path(@link)
     end
   end
 
