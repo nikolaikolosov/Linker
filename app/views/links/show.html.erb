@@ -12,7 +12,7 @@
 
     <%= comment.body %><br/>
 
-    Said <%= comment.user_id %> <%= comment.created_at.strftime("%d.%m.%Y") %> at <%= comment.created_at.strftime("%H:%M:%S") %>
+    Said <%= comment.user.email %> <%= comment.created_at.strftime("%d.%m.%Y") %> at <%= comment.created_at.strftime("%H:%M:%S") %>
 
   </p>
 
@@ -39,7 +39,6 @@
       <%= f.submit %>
 
     </p>
-
   <% end %>
 
 <% else %>
