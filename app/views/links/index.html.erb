@@ -1,29 +1,27 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Links</h1>
+<h1>Recently added links</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Url</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<hr />
 
-  <tbody>
+<br />
+
     <% @links.each do |link| %>
-      <tr>
-        <td><%= link.title %></td>
-        <td><%= link.url %></td>
-        <td><%= link_to 'Show', link %></td>
-        <td><%= link_to 'Edit', edit_link_path(link) %></td>
-        <td><%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+
+      <h2><%= link_to link.title, link.url %></h2>
+
+      <%= link_to 'View comments', link %>
+
+      <% if link.user == current_user %> <!-- кнопки, указанные ниже, будут видны только тому, кто создал ссылку -->
+
+       | <%= link_to 'Edit', edit_link_path(link) %> | 
+
+      <%= link_to 'Delete', link, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+      <% end %>
+
+      <h5>Posted <%= link.created_at.strftime("%d.%m.%Y") %> at <%= link.created_at.strftime("%H:%M:%S") %> by <%= link.user.email %></h5>
+
+      <br />
+
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Link', new_link_path %>
