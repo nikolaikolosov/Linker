@@ -2,10 +2,12 @@
 
 <p>
 	<h2><%= link_to @link.title, @link.url %></h2>
-  <h5>author: <%= @link.user.email %>, date: <%= @link.created_at.strftime("%d.%m.%Y") %>, time: <%= @link.created_at.strftime("%H:%M:%S") %></h5>
+  <h5>Posted by <%= @link.user.email %> <%= @link.created_at.strftime("%d.%m.%Y") %> at <%= @link.created_at.strftime("%H:%M:%S") %></h5>
 </p>
 
+<% if @link.comments.count > 0 %>
 <h2>Comments</h2>
+<% end %>
 
 <% @link.comments.each do |comment| %>
 
@@ -18,6 +20,7 @@
   </p>
 
   <% if comment.user == current_user %>
+  <%= link_to 'Delete', [@link, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
   <% end %>
 
 <% end %>
@@ -52,6 +55,7 @@
 <% end %>
 
 	<% if @link.user == current_user %>
-		<%= link_to 'Edit', edit_link_path(@link) %> |
+		<%= link_to 'Edit', edit_link_path(@link) %> | 
+    <%= link_to 'Delete', @link, method: :delete, data: { confirm: 'Are you sure?' } %> | 
 	<% end %>
 <%= link_to 'Back', links_path %>

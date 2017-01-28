@@ -17,15 +17,19 @@ class CommentsController < ApplicationController
 
   end
 
+  def set_comment
+    @comment = Comment.find(params[:id])
+  end
+
 
   # DELETE /comments/1
   # DELETE /comments/1.json
   def destroy
     @comment.destroy
+    @link = Link.find(params[:link_id])
     respond_to do |format|
-      format.html { redirect_to comments_url, notice: 'Comment was successfully deleted.' }
+      format.html { redirect_to link_path(@link), notice: 'Comment was successfully deleted.' }
       format.json { head :no_content }
-    redirect_to link_path(@link)
     end
   end
 
