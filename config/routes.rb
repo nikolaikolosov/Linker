@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+get 'bootstrap' => 'pages#bootstrap'
+
+devise_for :users
 
   resources :links do
 
