@@ -10,20 +10,25 @@
 
   <body>
     <header>
-    <p class="alert"><%= alert %></p>
-    <ul>
-        <li><%= link_to 'Linker', root_path %></li>
-      <% if user_signed_in? %>
-        <li><%= link_to 'Add new link', new_link_path %></li>
-        <li><%= link_to 'Your account', edit_user_registration_path %></li>
-        <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
-      <% else %>
-        <li><%= link_to 'Sign in', new_user_session_path %></li>
-        <li><%= link_to 'Sign up', new_user_registration_path %></li>
-      <% end %>
-    </ul>
+      <p class="alert"><%= alert %></p>
+      <ul>
+          <li><%= link_to 'Linker', root_path %></li>
+        <% if user_signed_in? %>
+          <li><%= link_to 'Add new link', new_link_path %></li>
+          <li><%= link_to 'Your account', edit_user_registration_path %></li>
+          <li><%= link_to 'Bootstrap', bootstrap_path %></li>
+          <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+        <% else %>
+          <li><%= link_to 'Sign in', new_user_session_path %></li>
+          <li><%= link_to 'Sign up', new_user_registration_path %></li>
+        <% end %>
+      </ul>
     </header>
 
-    <%= yield %>
+    <div class ="container">
+      <div class ="row">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
